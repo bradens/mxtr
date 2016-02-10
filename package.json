@@ -4,7 +4,8 @@
   "description": "A trello integration for mixmax to enable searching of your cards from a slash command.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "./node_modules/.bin/nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,12 @@
     "body-parser": "^1.14.2",
     "cors": "^2.7.1",
     "express": "^4.13.4",
-    "node-trello": "^1.1.2"
+    "handlebars": "^4.0.5",
+    "lodash": "^4.3.0",
+    "node-trello": "^1.1.2",
+    "oauth": "^0.9.14"
+  },
+  "devDependencies": {
+    "nodemon": "^1.8.1"
   }
 }
