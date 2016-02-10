@@ -1,0 +1,33 @@
+{
+  "name": "mixmax-trello",
+  "version": "1.0.0",
+  "description": "A trello integration for mixmax to enable searching of your cards from a slash command.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradens/mixmax-trello.git"
+  },
+  "keywords": [
+    "mixmax",
+    "trello",
+    "work",
+    "kanban",
+    "integration"
+  ],
+  "author": "Braden Simpson (@bradens)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bradens/mixmax-trello/issues"
+  },
+  "homepage": "https://github.com/bradens/mixmax-trello#readme",
+  "dependencies": {
+    "bluebird": "^3.2.2",
+    "body-parser": "^1.14.2",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "node-trello": "^1.1.2"
+  }
+}
