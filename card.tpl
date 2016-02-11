@@ -2,6 +2,7 @@
   <a
     href="{{ shortUrl }}"
     style="box-shadow: 0 0 5px 1px lightblue;
+      margin: 10px;
       border: 1px solid cornflowerblue;
       border-radius: 2px;
       color: initial;

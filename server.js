@@ -27,7 +27,7 @@ var corsOptions = {
 var oauth_store = {};
 
 // FIXME: This approach is not the greatest, as we are relying on the user parameter from the enhancement.
-// Would be better to get the mixmax id from some other means.
+// Would be better to get the mixmax id from some other means, or at least were given an obfuscated id rather than an email
 app.get('/authorize', function(req, res) {
   oauth.getOAuthRequestToken(function(error, token, tokenSecret, results) {
     oauth_store[token] = { tokenSecret: tokenSecret, email: req.query.user };
