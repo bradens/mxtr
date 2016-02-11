@@ -4,12 +4,14 @@ var fs = require('fs'),
     _ = require('lodash'),
     handlebars = require('handlebars');
 
+// Load the handlebars template for the trello card that we'll use later
 var source = fs.readFileSync('card.tpl', 'utf-8');
 var cardTemplate = handlebars.compile(source);
 
 module.exports = function(req, res, oauth, oauthStore) {
-  // TODO implement this resolver
   var term = req.query.text.trim();
+
+  // Use the mixmax-provided email as the key in our token store
   var email = req.query.user;
   var oauthCredentials = _.find(oauthStore, { email: email });
 
@@ -22,6 +24,7 @@ module.exports = function(req, res, oauth, oauthStore) {
   }
 };
 
+// Resolve an Id
 function handleIdString(id, req, res, email, oauthCredentials, oauth) {
   if (!oauthCredentials) {
     res.status(500).send("Error, couldn't find credentials, have you authorized with the server yet?");
@@ -49,6 +52,7 @@ function handleIdString(id, req, res, email, oauthCredentials, oauth) {
   }
 }
 
+// Resolve a query
 function handleSearchString(term, req, res, email, oauthCredentials, oauth) {
   // First get the search
   oauth.getProtectedResource(

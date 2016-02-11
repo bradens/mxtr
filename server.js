@@ -25,9 +25,9 @@ var corsOptions = {
 
 // Store the oauth tokens somewhere, move to a persistent store eventually
 var oauth_store = {};
-var oauth_tokens = {};
-var oauth_access_tokens = {};
 
+// FIXME: This approach is not the greatest, as we are relying on the user parameter from the enhancement.
+// Would be better to get the mixmax id from some other means.
 app.get('/authorize', function(req, res) {
   oauth.getOAuthRequestToken(function(error, token, tokenSecret, results) {
     oauth_store[token] = { tokenSecret: tokenSecret, email: req.query.user };
@@ -36,6 +36,7 @@ app.get('/authorize', function(req, res) {
   });
 });
 
+// Once oauth authorization is done, store the tokens and close the window.
 app.get('/done_authorization', function(req, res) {
   var token = req.query.oauth_token;
   var tokenSecret = oauth_store[token].tokenSecret;
