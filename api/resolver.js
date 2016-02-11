@@ -50,5 +50,22 @@ function handleIdString(id, req, res, email, oauthCredentials, oauth) {
 }
 
 function handleSearchString(term, req, res, email, oauthCredentials, oauth) {
+  // First get the search
+  oauth.getProtectedResource(
+    trelloSearchPath + "?partial=true&query=" + term,
+    "GET",
+    oauthCredentials.accessToken,
+    oauthCredentials.accessTokenSecret,
+    function(error, data, response) {
 
+      var cards = JSON.parse(data).cards
+      if (cards.length) {
+        // If we have a card, then run the id string on that card.
+        handleIdString(cards[0].id, req, res, email, oauthCredentials, oauth);
+      } else {
+        res.status(404).send("Error");
+        return;
+      }
+    }
+  );
 }
